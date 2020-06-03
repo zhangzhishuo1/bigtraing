@@ -1,8 +1,6 @@
 package com.example.frame.constants;
 
-/**
- * Created by 任小龙 on 2020/6/2.
- */
+
 public class ConstantKey {
     public static final String WX_APP_ID = "wx4b6c402fee6860c8";
     public static final String WX_APP_SECRET = "1278977f2848ee16708c656f66abf35a";

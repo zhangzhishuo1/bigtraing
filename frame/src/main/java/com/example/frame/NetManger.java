@@ -66,17 +66,7 @@ public class NetManger {
         return log;
     }
 
-    /**
-     * 使用observer观察者，抽取出网络请求及切换线程的过程
-     *
-     * @param localTestInfo
-     * @param pPresenter
-     * @param whichApi
-     * @param dataType
-     * @param o
-     * @param <T>
-     * @param <O>
-     */
+    //使用observer观察者，抽取出网络请求及切换线程的过程
     public <T, O> void netWork(Observable<T> localTestInfo, final ICommonPresenter pPresenter, final int whichApi, O... o) {
         localTestInfo.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -99,17 +89,7 @@ public class NetManger {
                 });
     }
 
-    /**
-     * 使用consumer观察者，抽取出网络请求及切换线程的过程
-     *
-     * @param localTestInfo
-     * @param pPresenter
-     * @param whichApi
-     * @param dataType
-     * @param o
-     * @param <T>
-     * @param <O>
-     */
+    //使用consumer观察者，抽取出网络请求及切换线程的过程
     public <T, O> void netWorkByConsumer(Observable<T> localTestInfo, final ICommonPresenter pPresenter, final int whichApi, final int dataType, O... o) {
         Disposable subscribe = localTestInfo.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

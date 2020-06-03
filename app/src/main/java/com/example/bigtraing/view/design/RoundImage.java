@@ -18,21 +18,15 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.example.bigtraing.R;
 
 public class RoundImage extends AppCompatImageView {
-    /**
-     * 半径
-     */
+
     private int radius;
-    /**
-     * 模式，手动设置半径大小还是按图片大小裁剪
-     */
+    //半径
     private int mode;
     private static final int AUTO = 0;
     private static final int MANUAL = 1;
 
     private Paint paint;
-    /**
-     * 画布大小，即RoundImage大小
-     */
+
     private int mWidth;
     private int mHeight;
 
@@ -47,9 +41,7 @@ public class RoundImage extends AppCompatImageView {
     public RoundImage(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        /**
-         * 获得我们所定义的自定义样式属性
-         */
+        //获得自定义属性
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.RoundImage, defStyleAttr, 0);
 
         mode = a.getInt(R.styleable.RoundImage_round_mode, AUTO);//默认AUTO
@@ -73,23 +65,18 @@ public class RoundImage extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);//不继承ImageView中的onDraw方法，否则会显示未处理的图做北京
 
         Drawable drawable = getDrawable();//获取图片
         if (drawable == null) {
             return;
         }
-        /**
-         * 根据图片宽高创建一样大小的空白Bitmap
-         */
+        //创建bitmap
         int w = drawable.getIntrinsicWidth();
         int h = drawable.getIntrinsicHeight();
         if (w <= 0 || h <= 0)return;
         Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 
-        /**
-         * 将空白Bitmap作为画布，将图片画上，实现drawable转Bitmap
-         */
+
         Canvas c = new Canvas(bitmap);
         drawable.setBounds(0, 0, w, h);
         drawable.draw(c);

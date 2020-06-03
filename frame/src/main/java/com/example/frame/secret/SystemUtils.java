@@ -29,9 +29,7 @@ import java.util.UUID;
 
 public class SystemUtils {
 
-    /**
-     * 获取版本号
-     */
+
     public static String getVersion(Context context) {
         PackageManager manager = context.getPackageManager();
         PackageInfo info = null;

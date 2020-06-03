@@ -23,12 +23,6 @@ public class BaseActivity extends AppCompatActivity {
         mApplication = (Application1907) getApplication();
     }
 
-    /**
-     * recyclerview在整个项目中使用比较频繁，将公共代码进行抽取
-     * @param pRecyclerView 要操作的recyclerview
-     * @param pRefreshLayout 如果有刷新和加载更多的问题，所使用的smartRefreshLayout
-     * @param pDataListener 刷新和加载的监听，如果实际使用中部涉及到刷新和加载更多，直接传null
-     */
     public void initRecyclerView(RecyclerView pRecyclerView, SmartRefreshLayout pRefreshLayout, DataListener pDataListener) {
         if (pRecyclerView != null) pRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (pRefreshLayout != null && pDataListener != null) {

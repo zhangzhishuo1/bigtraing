@@ -15,9 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by 任小龙 on 2020/6/2.
- */
+
 public abstract class BaseSplashActivity extends BaseMvpActivity {
     @BindView(R.id.advert_image)
     public ImageView advertImage;

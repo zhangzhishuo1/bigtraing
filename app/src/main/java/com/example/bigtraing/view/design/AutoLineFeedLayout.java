@@ -11,11 +11,7 @@ import com.example.bigtraing.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 自定义View，自动换行
- *
- * @author Administrator
- */
+
 public class AutoLineFeedLayout extends ViewGroup {
 
     private Type mType;
@@ -44,13 +40,7 @@ public class AutoLineFeedLayout extends ViewGroup {
         int with = 0;
         int height = 0;
         int childCount = getChildCount();
-        /**
-         * 在调用childView。getMeasre之前必须先调用该行代码，用于对子View大小的测量
-         */
         measureChildren(widthMeasureSpec, heightMeasureSpec);
-        /**
-         * 计算宽度
-         */
         switch (withMode) {
             case MeasureSpec.EXACTLY:
                 with = withSize;
