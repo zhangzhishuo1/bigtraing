@@ -1,0 +1,7 @@
+include ':data'
+include ':hha'
+include ':utils'
+include ':haha'
+include ':frame'
+include ':app'
+rootProject.name = "bigtraing"
