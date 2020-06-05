@@ -1,6 +1,8 @@
 package com.example.bigtraing.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +32,8 @@ public class SubjectActivity extends BaseMvpActivity<LauchModel> {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private SubjectAdapter mAdapter;
+    @BindView(R.id.more_content)
+    TextView moreContent;
 
     @Override
     public LauchModel setModel() {
@@ -47,6 +51,8 @@ public class SubjectActivity extends BaseMvpActivity<LauchModel> {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new SubjectAdapter(mListData,this);
         recyclerView.setAdapter(mAdapter);
+        moreContent.setText("完成");
+        moreContent.setOnClickListener(v->startActivity(new Intent(SubjectActivity.this,mApplication.isLogin() ? HomeActivity.class : LoginActivity.class)));
     }
 
     @Override
