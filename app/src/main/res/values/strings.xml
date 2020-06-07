@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">bigtraing</string>
     <string name="select_subject">请选择感兴趣的专业偶</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="text_live_area">直播专区</string>
+    <string name="living">正在直播</string>
 </resources>

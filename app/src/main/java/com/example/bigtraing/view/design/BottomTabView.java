@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +13,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
 
 import com.example.bigtraing.R;
+import com.example.bigtraing.base.BaseMvpFragment;
+import com.example.bigtraing.model.MainPageModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,11 +46,12 @@ public class BottomTabView extends RelativeLayout {
     TextView mineTab;
     private Context mContext;
     private final int mTabNum;
+    //根据自定义属性中tab数量的设置，过滤掉不用的view，剩下接下来使用的view
     private List<TextView> usedTabView = new ArrayList<>();
-    private List<Integer> normalIcon;
-    private List<Integer> selectedIcon;
-    private List<String> tabContent;
-    private int defaultTab = 1;
+    private List<Integer> normalIcon;//为选中的icon
+    private List<Integer> selectedIcon;// 选中的icon
+    private List<String> tabContent;//tab对应的内容
+    private int defaultTab;//默认显示第几个tab
     private  @ColorInt int mSelectedColor;
     private  @ColorInt int mUnSelectedColor;
 
@@ -55,6 +65,7 @@ public class BottomTabView extends RelativeLayout {
         mTabNum = ta.getInt(R.styleable.BottomTabView_tabNum, 4);
         mSelectedColor = ta.getColor(R.styleable.BottomTabView_selectedColor, Color.RED);
         mUnSelectedColor = ta.getColor(R.styleable.BottomTabView_unSelectedColor, Color.BLACK);
+        defaultTab = ta.getInt(R.styleable.BottomTabView_defaultSelect, 1);
         Collections.addAll(usedTabView,mainPageTab,courseTab,vipTab,dataTab,mineTab);
         if (mTabNum <5){
             for (int i = 5;i > mTabNum;i--){
@@ -62,17 +73,25 @@ public class BottomTabView extends RelativeLayout {
                 usedTabView.remove(i-1);
             }
         }
+        ta.recycle();
     }
-    public void setResource(List<Integer> normalIcon,List<Integer> selectedIcon,List<String> tabContent,int pDefaultTab){
-        if (pDefaultTab<=0){
-            Log.e(this.getClass().getSimpleName(), "setResource: "+"没有tab" );
+
+    /**
+     * 给自定义tab设置数据
+     * @param normalIcon 未选中的icon集合
+     * @param selectedIcon 选中的icon集合
+     * @param tabContent tab内容描述
+     */
+    public void setResource(List<Integer> normalIcon,List<Integer> selectedIcon,List<String> tabContent){
+        if (defaultTab<=0){
+            Log.e(this.getClass().getSimpleName(), "0个tab，你玩lz呢" );
+            return;
         }
         if (usedTabView.size() != normalIcon.size() || usedTabView.size()!= selectedIcon.size()|| usedTabView.size() != tabContent.size()){
-            Log.e(this.getClass().getName(),"11"+"不匹配");
+            Log.e(this.getClass().getName(),"---------"+"自定义属性的数量和传递的资源数量不匹配");
             return;
         }
         this.normalIcon = normalIcon;this.selectedIcon = selectedIcon;this.tabContent = tabContent;
-        defaultTab = pDefaultTab;
         setContent();
         setStyle();
     }
@@ -95,9 +114,16 @@ public class BottomTabView extends RelativeLayout {
         }
     }
 
+    private @IdRes
+    int currentId;
     @OnClick({R.id.main_page_tab, R.id.course_tab, R.id.vip_tab, R.id.data_tab, R.id.mine_tab})
     public void onViewClicked(View view) {
         int id = view.getId();
+        if (currentId == id){
+            Log.e(this.getClass().getName(), "onViewClicked: "+"你点击的是已选中的位置" );
+            return;
+        }
+        currentId = id;
         if (id == R.id.main_page_tab) {
             defaultTab = 1;
         } else if (id == R.id.course_tab) {
@@ -110,5 +136,16 @@ public class BottomTabView extends RelativeLayout {
             defaultTab = 5;
         }
         setStyle();
+        if (mOnBottomTabClickCallBack != null) mOnBottomTabClickCallBack.clickTab(defaultTab);
+    }
+
+    private OnBottomTabClickCallBack mOnBottomTabClickCallBack;
+
+    public void setOnBottomTabClickCallBack(OnBottomTabClickCallBack pOnBottomTabClickCallBack){
+        mOnBottomTabClickCallBack = pOnBottomTabClickCallBack;
+    }
+
+    public interface OnBottomTabClickCallBack{
+        void clickTab(int tab);
     }
 }

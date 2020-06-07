@@ -7,6 +7,7 @@ public class ConstantKey {
     public static final String QQ_APP_ID = "1105712307";
 
     public static final String LOGIN_INFO = "login_info";
+    public static final String Constan = "constan_info";
     public static final String DEVICE_INFO = "device_info";
     public static final String SUBJECT_LIST = "subject_info";
     public static final String SUBJECT_SELECT = "subject_select";

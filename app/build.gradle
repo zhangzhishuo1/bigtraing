@@ -39,7 +39,7 @@ dependencies {
     implementation project(path: ':frame')
     implementation "com.jakewharton:butterknife:$butterknife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
-
+    implementation'com.youth.banner:banner:1.4.10'
     implementation 'androidx.navigation:navigation-fragment:2.0.0-rc02'
     implementation 'androidx.navigation:navigation-ui:2.0.0-rc02'
 }

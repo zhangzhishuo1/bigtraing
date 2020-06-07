@@ -2,6 +2,7 @@ package com.example.bigtraing.view.activity;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +11,7 @@ import com.example.bigtraing.R;
 import com.example.bigtraing.base.BaseSplashActivity;
 import com.example.bigtraing.model.LauchModel;
 import com.example.data.BaseInfo;
+import com.example.data.LoginInfo;
 import com.example.data.MainAdEntity;
 import com.example.data.SpecialtyChooseEntity;
 import com.example.frame.ApiConfig;
@@ -52,7 +54,11 @@ public class SplashActivity extends BaseSplashActivity {
             mApplication.setSelectedInfo(mSelectedInfo);
             specialtyId = mSelectedInfo.getSpecialty_id();
         }
-        Point realSize = SystemUtils.getRealSize(this);mPresenter.getData(ApiConfig.ADVERT, specialtyId, realSize.x, realSize.y);
+        Point realSize = SystemUtils.getRealSize(this);
+        mPresenter.getData(ApiConfig.ADVERT, specialtyId, realSize.x, realSize.y);
+        new Handler().postDelayed(()->{ if (mInfo == null)jump(); },3000);
+        LoginInfo loginInfo = SharedPrefrenceUtils.getObject(this,ConstantKey.LOGIN_INFO);
+        if (loginInfo != null && !TextUtils.isEmpty(loginInfo.getUid()))mApplication.setLoginInfo(loginInfo);
     }
     @Override
     public void netSuccess(int whichApi, Object[] pD) {
