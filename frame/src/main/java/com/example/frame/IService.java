@@ -2,8 +2,10 @@ package com.example.frame;
 
 
 import com.example.data.BaseInfo;
+import com.example.data.InformationBean;
 import com.example.data.LoginInfo;
 import com.example.data.MainAdEntity;
+import com.example.data.NewbestBean;
 import com.example.data.PersonHeader;
 import com.example.data.SpecialtyChooseEntity;
 import com.example.data.TestInfo;
@@ -43,4 +45,10 @@ public interface IService {
 
     @GET("lesson/getLessonListForApi")
     Observable<TrainningBean>getTrainInfo(@QueryMap Map<String,Object>params);
+
+    @GET("openapi/group/getGroupList")
+    Observable<InformationBean>getInformation(@QueryMap Map<String,Object>params);
+
+    @GET("openapi/group/getThreadEssence")
+    Observable<NewbestBean>getnewbest(@QueryMap Map<String,Object>params);
 }
