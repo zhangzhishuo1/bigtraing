@@ -12,8 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bigtraing.MainActivity;
 import com.example.bigtraing.R;
-import com.example.data.TestInfo;
+import com.example.frame.bean.TestInfo;
 
 import java.util.List;
 
@@ -21,9 +22,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
     private List<TestInfo.DataInfo> datas;
     private Context mContext;
 
-    public TestAdapter(List<TestInfo.DataInfo> pDatas, Context pContext) {
-        datas = pDatas;
-        mContext = pContext;
+    public TestAdapter(List<TestInfo.DataInfo> datas, MainActivity pContext) {
+        this.datas=datas;
+        mContext=pContext;
     }
 
     @NonNull

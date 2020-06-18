@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>FrameApplication.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+FrameApplication.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.frame;
+
+<span class="s0">import </span>android.content.Context;
+<span class="s0">import </span>android.text.TextUtils;
+
+<span class="s0">import </span>com.example.frame.bean.Device;
+<span class="s0">import </span>com.example.frame.bean.LoginInfo;
+<span class="s0">import </span>com.example.utils.UtilsApplication;
+
+
+<span class="s0">public class </span>FrameApplication <span class="s0">extends </span>UtilsApplication {
+    <span class="s0">private static </span>FrameApplication application;
+    <span class="s0">private </span>Device mDeviceInfo;
+    <span class="s0">private </span>LoginInfo mLoginInfo;
+    <span class="s0">private </span>String cookie;
+    <span class="s0">private  </span>SpecialtyChooseEntity.DataBean selectedInfo;
+
+    <span class="s0">public </span>SpecialtyChooseEntity.DataBean getSelectedInfo() {
+        <span class="s0">return </span>selectedInfo;
+    }
+
+    <span class="s0">public void </span>setSelectedInfo(SpecialtyChooseEntity.DataBean pSelectedInfo) {
+        selectedInfo = pSelectedInfo;
+    }
+
+    <span class="s0">public </span>String getCookie() {
+        <span class="s0">return </span>cookie;
+    }
+
+    <span class="s0">public void </span>setCookie(String cookie) {
+        <span class="s0">this</span>.cookie = cookie;
+    }
+
+    <span class="s0">public </span>LoginInfo getLoginInfo() {
+        <span class="s0">return </span>mLoginInfo;
+    }
+
+    <span class="s0">public boolean </span>isLogin(){
+        <span class="s0">return </span>mLoginInfo != <span class="s0">null </span>&amp;&amp; !TextUtils.isEmpty(mLoginInfo.getUid());
+    }
+
+    <span class="s0">public void </span>setLoginInfo(LoginInfo mLoginInfo) {
+        <span class="s0">this</span>.mLoginInfo = mLoginInfo;
+    }
+
+    <span class="s0">public </span>Device getDeviceInfo() {
+        <span class="s0">return </span>mDeviceInfo;
+    }
+
+    <span class="s0">public void </span>setDeviceInfo(Device mDeviceInfo) {
+        <span class="s0">this</span>.mDeviceInfo = mDeviceInfo;
+    }
+
+    @Override
+    <span class="s0">public void </span>onCreate() {
+        <span class="s0">super</span>.onCreate();
+        application = <span class="s0">this</span>;
+    }
+
+    <span class="s0">public static </span>FrameApplication getFrameApplication(){
+        <span class="s0">return </span>application;
+    }
+
+    <span class="s0">public static </span>Context getFrameApplicationContext(){
+        <span class="s0">return </span>application.getApplicationContext();
+    }
+}
+</pre>
+</body>
+</html>

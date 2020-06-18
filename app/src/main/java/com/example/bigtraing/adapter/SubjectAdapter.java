@@ -5,13 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bigtraing.R;
-import com.example.bigtraing.view.design.RoundImage;
-import com.example.data.SpecialtyChooseEntity;
+import com.example.bigtraing.design.RoundImage;
+import com.example.frame.bean.SpecialtyChooseEntity;
 import com.example.utils.newAdd.GlideUtil;
 
 import java.util.List;
@@ -19,18 +20,23 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHolder> {
+
     private List<SpecialtyChooseEntity> mList;
     private Context mContext;
+
     public SubjectAdapter(List<SpecialtyChooseEntity> pList, Context pContext) {
         mList = pList;
         mContext = pContext;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.subject_child_view, parent, false));
     }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SpecialtyChooseEntity entity = mList.get(position);
@@ -39,6 +45,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         holder.itemRecyclerview.setLayoutManager(new GridLayoutManager(mContext,4));
         holder.itemRecyclerview.setAdapter(new SubjectChildAdapter(entity.getData(),mContext,this));
     }
+
     @Override
     public int getItemCount() {
         return mList != null ? mList.size() : 0;

@@ -1,20 +1,15 @@
 package com.example.bigtraing.base;
 
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bigtraing.R;
-import com.example.data.Device;
 import com.example.frame.FrameApplication;
+import com.example.frame.bean.Device;
 import com.example.frame.secret.SystemUtils;
 import com.example.utils.NetworkUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 
 public abstract class BaseSplashActivity extends BaseMvpActivity {
     @BindView(R.id.advert_image)

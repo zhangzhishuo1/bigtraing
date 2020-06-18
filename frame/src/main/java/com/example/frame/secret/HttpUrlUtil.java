@@ -3,7 +3,6 @@ package com.example.frame.secret;
 import android.content.res.Resources;
 import android.text.TextUtils;
 
-
 import androidx.annotation.Nullable;
 import androidx.annotation.StringDef;
 import androidx.annotation.StringRes;

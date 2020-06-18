@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.example.bigtraing.view.fragment.MainPageFragment"
+        android:name="com.example.bigtraing.fragment.MainPageFragment"
         android:label="MainPageFragment">
       <!--  <action
             android:id="@+id/toAdvert"
@@ -13,19 +13,19 @@
     </fragment>
     <fragment
         android:id="@+id/courseFragment"
-        android:name="com.example.bigtraing.view.fragment.CourseFragment"
+        android:name="com.example.bigtraing.fragment.CourseFragment"
         android:label="CourseFragment"/>
     <fragment
         android:id="@+id/vipFragment"
-        android:name="com.example.bigtraing.view.fragment.VIPFragment"
+        android:name="com.example.bigtraing.fragment.VIPFragment"
         android:label="VIPFragment"/>
     <fragment
         android:id="@+id/dataFragment"
-        android:name="com.example.bigtraing.view.fragment.DataFragment"
+        android:name="com.example.bigtraing.fragment.DataFragment"
         android:label="DataFragment"/>
     <fragment
         android:id="@+id/mineFragment"
-        android:name="com.example.bigtraing.view.fragment.MineFragment"
+        android:name="com.example.bigtraing.fragment.MineFragment"
         android:label="MineFragment"/>
 
 </navigation>

@@ -11,10 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.bigtraing.R;
-import com.example.data.SpecialtyChooseEntity;
 import com.example.frame.FrameApplication;
+import com.example.frame.bean.SpecialtyChooseEntity;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class SubjectChildAdapter extends RecyclerView.Adapter<SubjectChildAdapte
     private Context mContext;
     private SubjectAdapter fatherAdapter;
 
-    public SubjectChildAdapter(List<SpecialtyChooseEntity.DataBean> pData, Context pContext,SubjectAdapter fatherAdapter) {
+    public SubjectChildAdapter(List<SpecialtyChooseEntity.DataBean> pData, Context pContext, SubjectAdapter fatherAdapter) {
         data = pData;
         mContext = pContext;
         this.fatherAdapter = fatherAdapter;
@@ -46,7 +45,8 @@ public class SubjectChildAdapter extends RecyclerView.Adapter<SubjectChildAdapte
             holder.label.setBackground(ContextCompat.getDrawable(mContext, R.drawable.shape_radius_white_bg));
         }
         holder.label.setOnClickListener(v -> {
-            FrameApplication.getFrameApplication().setSelectedInfo(data.get(position));
+            SpecialtyChooseEntity.DataBean dataBean = data.get(position);
+            FrameApplication.getFrameApplication().setSelectedInfo(dataBean);
             fatherAdapter.notifyDataSetChanged();
         });
     }

@@ -139,7 +139,10 @@
         <attr name="halfstart" format="boolean" />
     </declare-styleable>
 
-
+    <declare-styleable name="ImageViewFillet">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
     <attr name="borderRadius" format="dimension" />
     <attr name="type">
         <enum name="circle" value="0" />
@@ -246,4 +249,5 @@
         <attr name="selectedColor" format="color" />
         <attr name="unSelectedColor" format="color" />
     </declare-styleable>
+
 </resources>

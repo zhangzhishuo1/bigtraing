@@ -1,9 +1,5 @@
 package com.example.bigtraing.adapter;
-/**
- * 作者：Leishen  秦宇
- * 创建于： 2020/6/6 12:22
- * 作者邮箱：1623060075@qq.com
- */
+
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bigtraing.R;
-import com.example.data.TrainningBean;
+import com.example.frame.bean.TrainningBean;
 
 import java.util.List;
 

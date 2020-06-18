@@ -1,12 +1,10 @@
 package com.example.frame;
 
-import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
-
-import com.example.data.Device;
-import com.example.data.LoginInfo;
-import com.example.data.SpecialtyChooseEntity;
+import com.example.frame.bean.Device;
+import com.example.frame.bean.LoginInfo;
+import com.example.frame.bean.SpecialtyChooseEntity;
 import com.example.utils.UtilsApplication;
 
 public class FrameApplication extends UtilsApplication {
@@ -14,7 +12,7 @@ public class FrameApplication extends UtilsApplication {
     private Device mDeviceInfo;
     private LoginInfo mLoginInfo;
     private String cookie;
-    private  SpecialtyChooseEntity.DataBean selectedInfo;
+    private SpecialtyChooseEntity.DataBean selectedInfo;
 
     public SpecialtyChooseEntity.DataBean getSelectedInfo() {
         return selectedInfo;

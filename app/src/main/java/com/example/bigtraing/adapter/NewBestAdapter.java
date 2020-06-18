@@ -1,5 +1,6 @@
 package com.example.bigtraing.adapter;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,18 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bigtraing.R;
-import com.example.data.NewbestBean;
+import com.example.frame.bean.NewbestBean;
 
 import java.util.List;
-
 
 public class NewBestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<NewbestBean.ResultBean> list;
-    private String n="";
-    private String y="";
-    private String r="";
-
+    private String n = "";
+    private String y = "";
+    private String r = "";
 
     public NewBestAdapter(Context context, List<NewbestBean.ResultBean> list) {
         this.context = context;
@@ -33,19 +32,18 @@ public class NewBestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(context).inflate(R.layout.newbest_item, null);
-
+        View inflate = LayoutInflater.from(context).inflate(R.layout.newbestbean_item, null);
         return new ViewHolder1(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         NewbestBean.ResultBean bean = list.get(position);
-            ViewHolder1 viewHolder1= (ViewHolder1) holder;
-            viewHolder1.tv_title.setText(bean.getTitle());
+        ViewHolder1 viewHolder1 = (ViewHolder1) holder;
+        viewHolder1.tv_title.setText(bean.getTitle());
         Glide.with(context).load(bean.getPic()).into(viewHolder1.img_pic);
-        viewHolder1.tv_view_num.setText(bean.getView_num()+"人");
-        viewHolder1.tv_reply_num.setText(bean.getReply_num()+"跟帖");
+        viewHolder1.tv_view_num.setText(bean.getView_num() + "人浏览");
+        viewHolder1.tv_reply_num.setText(bean.getReply_num() + "人跟贴");
         String gid = bean.getGid();
         if (gid.length() == 8) {
             char[] chars = gid.toCharArray();
@@ -89,10 +87,12 @@ public class NewBestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         r = "";
     }
 
+
     @Override
     public int getItemCount() {
         return list.size();
     }
+
 
     public static
     class ViewHolder1 extends RecyclerView.ViewHolder {

@@ -16,42 +16,45 @@ import com.example.frame.ICommonView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class   BaseMvpFragment<M extends ICommonModel> extends BaseFragment  implements ICommonView {
+
+
+public abstract  class BaseMvpFragment<M extends ICommonModel>extends BaseFragment implements ICommonView {
     private M mModel;
-    public CommonPresenter mPresenter;
     private Unbinder mBind;
+    public CommonPresenter mPresenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(setLayoutId(), container, false);
-        mBind = ButterKnife.bind(this, inflate);
+        mBind=  ButterKnife.bind(this,inflate);
         return inflate;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mModel = setModel();
+        mModel=setModel();
         mPresenter = new CommonPresenter(this, mModel);
-        setUpView();
-        setUpData();
+        setView();
+        setData();
     }
 
-    public abstract M setModel();//
+    public abstract void setData();
 
-    public abstract int setLayoutId();//
+    public abstract void setView();
 
-    public abstract void setUpView();
+    public abstract M setModel();
 
-    public abstract void setUpData();
+    public abstract int setLayoutId();
 
     public abstract void netSuccess(int whichApi, Object[] pD);
 
     public void netFailed(int whichApi, Throwable pThrowable){}
 
+
+
     @Override
-    public void onSuccess(int whichApi,Object[] pD) {
+    public void onSuccess(int whichApi, Object[] pD) {
         netSuccess(whichApi,pD);
     }
 
@@ -65,6 +68,6 @@ public abstract class   BaseMvpFragment<M extends ICommonModel> extends BaseFrag
     public void onDestroyView() {
         super.onDestroyView();
         mPresenter.clear();
-        if (mBind != null)mBind.unbind();
+        if (mBind!=null)mBind.unbind();
     }
 }

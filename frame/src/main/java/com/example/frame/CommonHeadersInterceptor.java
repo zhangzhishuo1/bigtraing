@@ -2,7 +2,6 @@ package com.example.frame;
 
 import android.text.TextUtils;
 
-
 import com.example.frame.constants.ConstantKey;
 import com.example.utils.newAdd.SharedPrefrenceUtils;
 
@@ -19,6 +18,7 @@ public class CommonHeadersInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         if (!TextUtils.isEmpty(FrameApplication.getFrameApplication().getCookie())){
+            //headers(Headers.of(NetHeaders.getHeadMap()))//可通过map集合一次性添加多个请求头
             request = request.newBuilder().header("Cookie", FrameApplication.getFrameApplication().getCookie()).build();
         }
         Response proceed = chain.proceed(request);

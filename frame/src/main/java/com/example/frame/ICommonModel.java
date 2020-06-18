@@ -1,10 +1,8 @@
 package com.example.frame;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
+/**
+ * Created by 任小龙 on 2020/5/28.
+ */
 public interface ICommonModel<T> {
     /**
      * 用于model层执行耗时任务，不处理刷新和加载逻辑

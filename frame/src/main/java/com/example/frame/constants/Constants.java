@@ -4,8 +4,11 @@ package com.example.frame.constants;
 import com.example.frame.FrameApplication;
 import com.example.frame.R;
 
+/**
+ * Created by Administrator on 2016/8/2.
+ */
 public class Constants {
-
+    public static final int LIMIT_NUM = 10;
     public static String RSA_PUBLIC;
 
     static {
@@ -17,7 +20,9 @@ public class Constants {
     public static final String WX_APP_ID = "wx4b6c402fee6860c8";
     public static final String WB_APP_ID = "918914443";
 
-    //当前 DEMO 应用的回调页，第三方应用可以使用自己的回调页。
+    /**
+     * 当前 DEMO 应用的回调页，第三方应用可以使用自己的回调页。
+     */
     public static final String REDIRECT_URL = "http://edu.zhulong.com";
 
 

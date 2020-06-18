@@ -2,6 +2,7 @@ package com.example.bigtraing.base;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+
 import androidx.annotation.Nullable;
 
 import com.example.frame.CommonPresenter;
@@ -35,17 +36,18 @@ public abstract class BaseMvpActivity<M extends ICommonModel> extends BaseActivi
 
     public abstract void netSuccess(int whichApi, Object[] pD);
 
-    public void netFailed(int whichApi, Throwable pThrowable){}
+    public void netFailed(int whichApi, Throwable pThrowable) {
+    }
 
     @Override
-    public void onSuccess(int whichApi,Object[] pD) {
-        netSuccess(whichApi,pD);
+    public void onSuccess(int whichApi, Object[] pD) {
+        netSuccess(whichApi, pD);
     }
 
     @Override
     public void onFailed(int whichApi, Throwable pThrowable) {
-        showLog("net work error: "+whichApi+"error content"+ pThrowable != null && !TextUtils.isEmpty(pThrowable.getMessage()) ? pThrowable.getMessage() : "不明错误类型");
-        netFailed(whichApi,pThrowable);
+        showLog("net work error: " + whichApi + "error content" + pThrowable != null && !TextUtils.isEmpty(pThrowable.getMessage()) ? pThrowable.getMessage() : "不明错误类型");
+        netFailed(whichApi, pThrowable);
     }
 
     @Override

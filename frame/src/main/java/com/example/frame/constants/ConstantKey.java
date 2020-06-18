@@ -2,12 +2,14 @@ package com.example.frame.constants;
 
 
 public class ConstantKey {
+    public static final String IS_SELECTDE="lksdjaljasdljlkjlsdjflajsdlkjf";
+    public static final String STATE="lkajsdflkjsdlffkjasljljlnfnezzz";
+
     public static final String WX_APP_ID = "wx4b6c402fee6860c8";
     public static final String WX_APP_SECRET = "1278977f2848ee16708c656f66abf35a";
     public static final String QQ_APP_ID = "1105712307";
 
     public static final String LOGIN_INFO = "login_info";
-    public static final String Constan = "constan_info";
     public static final String DEVICE_INFO = "device_info";
     public static final String SUBJECT_LIST = "subject_info";
     public static final String SUBJECT_SELECT = "subject_select";
@@ -38,6 +40,7 @@ public class ConstantKey {
     public static final String SET_NEW_PWD = "set_new_pwd";
     public static final String SECRET_KEY = "screctKey";
     public static final String LOGIN_EXPIRE = "login_expire";
+    public static final String GROU_TO_DETAIL_GID = "grou_to_detail_gid";
     public static final int TRAINTAB = 3;
     public static final int BESTTAB = 1;
     public static final int PUBLICTAB = 2;

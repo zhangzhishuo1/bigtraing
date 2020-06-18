@@ -1,39 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_home"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.bigtraing.view.fragment.HomeFragment"
+        android:name="com.example.bigtraing.fragment.HomeFragment"
         android:label="HomeFragment">
-      <!--  <action
-            android:id="@+id/toAdvert"
-            app:destination="@id/advertFragment" />-->
+        <action android:id="@+id/home_to_data_detail"
+            app:destination="@+id/dataGroupDetailFragment"/>
     </fragment>
-    <!--<fragment
-        android:id="@+id/advertFragment"
-        android:name="com.teach.kotlinlearn.ui.fragment.AdvertFragment"
-        android:label="AdvertFragment">
+    <fragment
+        android:id="@+id/dataGroupDetailFragment"
+        android:name="com.example.bigtraing.fragment.DataGroupDetailFragment"
+        android:label="DataGroupDetailFragment" >
         <action
-            android:id="@+id/backToHome"
-            app:popUpTo="@id/homeFragment" />
+            android:id="@+id/dataGroup_back_to_home"
+            app:popUpTo="@id/homeFragment"/>
     </fragment>
-    <fragment
-        android:id="@+id/courseDetailFragment"
-        android:name="com.teach.kotlinlearn.ui.fragment.CourseDetailFragment"
-        android:label="CourseDetailFragment">
-        <action
-            android:id="@+id/backToHome"
-            app:popUpTo="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/videoPlayerFragmentFragment"
-        android:name="com.teach.kotlinlearn.ui.fragment.VideoPlayerFragment"
-        android:label="VideoPlayerFragmentFragment" />
-    <fragment
-        android:id="@+id/groupDetailFragment"
-        android:name="com.teach.kotlinlearn.ui.fragment.GroupDetailFragment"
-        android:label="GroupDetailFragment"/>-->
+
 </navigation>

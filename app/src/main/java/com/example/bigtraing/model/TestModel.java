@@ -1,5 +1,6 @@
 package com.example.bigtraing.model;
 
+
 import com.example.frame.ApiConfig;
 import com.example.frame.ICommonModel;
 import com.example.frame.ICommonPresenter;
@@ -7,8 +8,11 @@ import com.example.frame.NetManger;
 
 import java.util.Map;
 
+/**
+ * Created by 任小龙 on 2020/5/28.
+ */
 
-
+//建议：一个独立单元使用一个model，比如说账号注册、验证码注册、账号登录、验证码登录、三方登录
 public class TestModel implements ICommonModel {
     NetManger mManger = NetManger.getInstance();
 
@@ -20,4 +24,12 @@ public class TestModel implements ICommonModel {
                 break;
         }
     }
+
+
+
+
+  /*  @Override
+    public void getTrendsData(ICommonPresenter pPresenter, int whichApi, int dataType, Object[] param) {
+
+    }*/
 }

@@ -1,9 +1,9 @@
 package com.example.bigtraing.base;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.example.frame.FrameApplication;
+
 
 public class Application1907 extends FrameApplication {
     private static Application1907 mApplication1907;

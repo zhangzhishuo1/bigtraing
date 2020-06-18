@@ -1,6 +1,5 @@
 package com.example.bigtraing.adapter;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bigtraing.R;
-import com.example.data.TrainningBean;
+import com.example.frame.bean.TrainningBean;
 
 import java.util.List;
 

@@ -3,8 +3,8 @@ package com.example.frame;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.data.Device;
-import com.example.data.LoginInfo;
+import com.example.frame.bean.Device;
+import com.example.frame.bean.LoginInfo;
 import com.example.frame.constants.ConstantKey;
 import com.example.frame.constants.Constants;
 import com.example.frame.secret.Md5Util;
@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
+
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -41,9 +42,13 @@ public class CommonParamsInterceptor implements Interceptor {
                 newRequest = addJsonStr(request);
             } else if (preBody.contentType() != null && preBody.contentType().toString().contains("multipart/form-data")) {
                 if (!(preBody instanceof MultipartBody)) {
+                    //一下代码目前不会执行，上传文件的公参建议在单个网络请求中添加，因为各家公司的后台对于除文件外参数传递要求不一致
+                    //如果非文件参数可以拼接到URL后边进行请求，以下代码可以实现公参拼接（当然定义请求接口时，文件和非文件参数要分开传
+                    //如果非文件参数必须通过requestbody传递，以下方法不可行
                     newRequest = addUrl(request);
                 }
             } else {
+//                newRequest = addFormUrl(request);
                 newRequest = addFormPrams(request);
             }
         }
@@ -116,6 +121,7 @@ public class CommonParamsInterceptor implements Interceptor {
             FormBody formBody = (FormBody) request.body();
             for (int i = 0; i < formBody.size(); i++) {
                 if (formBody.encodedName(i).equals("uid")){
+                    //如果你网络请求传了UID，以传 为准，没传，用登录时候返回的UID
                     uid = formBody.encodedValue(i);
                 }
                 if(formBody.encodedName(i).equals(ConstantKey.SECRET_KEY)){
